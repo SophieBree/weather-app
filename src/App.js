@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 const api = {
-  key: 'process.env.REACT_APP_API_KEY',
+  key: process.env.REACT_APP_API_KEY,
   base: "https://api.weatherbit.io/v2.0/current?city=Sydney&country=Australia&key="
 }
 
@@ -13,6 +13,7 @@ const search = () => {
       .then(res => res.json())
       .then(result => {
         setWeather(result);
+        console.log(process.env.REACT_APP_API_KEY)
       })
   }
 
