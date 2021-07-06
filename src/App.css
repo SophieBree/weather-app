@@ -1,38 +1,142 @@
 .App {
+  height: 100vh;
+  background: hsla(208, 100%, 86%, 1);
+
+  background: linear-gradient(
+    0deg,
+    hsla(208, 100%, 86%, 1) 0%,
+    hsla(206, 100%, 90%, 1) 48%,
+    hsla(196, 100%, 95%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    0deg,
+    hsla(208, 100%, 86%, 1) 0%,
+    hsla(206, 100%, 90%, 1) 48%,
+    hsla(196, 100%, 95%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    0deg,
+    hsla(208, 100%, 86%, 1) 0%,
+    hsla(206, 100%, 90%, 1) 48%,
+    hsla(196, 100%, 95%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B8DEFF", endColorstr="#CEEAFF", GradientType=1 );
+
+  font-family: Montserrat;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.current-temp {
+  font-size: 72px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather-data-container {
+  display: grid;
+  grid-template-columns: 25% 25% 50%;
+  grid-template-rows: 100px 100px 100px;
+  width: 60vw;
+  height: 100vh;
+  padding-top: 50px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Column 1 */
+
+.current-temp {
+  grid-column: 1;
+  grid-row: 1 / 1;
+  justify-self: start;
 }
 
-.App-link {
-  color: #61dafb;
+.feels-like {
+  grid-column: 1;
+  grid-row: 2 / 3;
+  justify-self: start;
+  align-self: center;
+  padding-left: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.feels-like p {
+  margin: 0;
+}
+
+.max-temp {
+  grid-column: 3;
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: end;
+  padding-right: 20%;
+}
+
+.max-temp span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.min-temp {
+  grid-column: 3;
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: end;
+  padding-left: 100px;
+}
+
+.min-temp span {
+  font-size: 24px;
+}
+
+/* Column 2 */
+
+.weather-description {
+  grid-column: 2 / span 2;
+  grid-row: 1 / 1;
+  justify-self: start;
+  align-self: end;
+  font-size: 48px;
+}
+
+.rain-chance {
+  align-self: center;
+  padding-left: 10px;
+}
+
+.wind {
+  grid-column: 1;
+  grid-row: 3 / 4;
+  padding-left: 10px;
+  align-self: center;
+}
+
+.wind p {
+  margin: 0;
+}
+
+.sunrise {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: center;
+  justify-self: start;
+  padding-left: 10px;
+}
+
+.sunset {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: center;
+  justify-self: end;
+  padding-right: 10px;
+}
+
+.uv {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+  padding-right: 30px;
 }
