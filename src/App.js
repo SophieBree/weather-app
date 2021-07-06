@@ -8,12 +8,18 @@ function App() {
   const [query, setQuery] = useState("");
 
   const search = () => {
-    fetch(`https://api.weatherbit.io/v2.0/current?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`)
+    fetch(
+      `https://api.weatherbit.io/v2.0/current?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`,
+      { mode: "cors" }
+    )
       .then((res) => res.json())
       .then((result) => {
         setCurrentWeather(result);
       });
-    fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`)
+    fetch(
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`,
+      { mode: "cors" }
+    )
       .then((res) => res.json())
       .then((result) => {
         let sunrise_time = new Date(
@@ -30,7 +36,14 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" name="search" id="search" placeholder="Search..." onChange={e => setQuery(e.target.value)} value={query}/>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search..."
+        onChange={(e) => setQuery(e.target.value)}
+        value={query}
+      />
       <button onClick={search}>Get Weather Data</button>
       {typeof currentWeather.data != "undefined" &&
       typeof forecastWeather.data != "undefined" ? (
