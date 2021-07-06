@@ -2,26 +2,18 @@ import "./App.css";
 import { useState } from "react";
 import WeatherData from "./components/WeatherData";
 
-const api = {
-  key: process.env.REACT_APP_API_KEY,
-  current_base:
-    "https://api.weatherbit.io/v2.0/current?city=",
-  forecast_base:
-    "https://api.weatherbit.io/v2.0/forecast/daily?city=",
-};
-
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [forecastWeather, setForecastWeather] = useState({});
   const [query, setQuery] = useState("");
 
   const search = () => {
-    fetch(`${api.current_base}${query}&country=Australia&key=${api.key}`)
+    fetch(`https://api.weatherbit.io/v2.0/current?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`)
       .then((res) => res.json())
       .then((result) => {
         setCurrentWeather(result);
       });
-    fetch(`${api.forecast_base}${query}&country=Australia&key=${api.key}`)
+    fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`)
       .then((res) => res.json())
       .then((result) => {
         let sunrise_time = new Date(
