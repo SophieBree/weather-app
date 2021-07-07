@@ -1,29 +1,6 @@
 .App {
   height: 100vh;
-  background: hsla(208, 100%, 86%, 1);
 
-  background: linear-gradient(
-    0deg,
-    hsla(208, 100%, 86%, 1) 0%,
-    hsla(206, 100%, 90%, 1) 48%,
-    hsla(196, 100%, 95%, 1) 100%
-  );
-
-  background: -moz-linear-gradient(
-    0deg,
-    hsla(208, 100%, 86%, 1) 0%,
-    hsla(206, 100%, 90%, 1) 48%,
-    hsla(196, 100%, 95%, 1) 100%
-  );
-
-  background: -webkit-linear-gradient(
-    0deg,
-    hsla(208, 100%, 86%, 1) 0%,
-    hsla(206, 100%, 90%, 1) 48%,
-    hsla(196, 100%, 95%, 1) 100%
-  );
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B8DEFF", endColorstr="#CEEAFF", GradientType=1 );
 
   font-family: Roboto;
 }
@@ -41,12 +18,11 @@ h1 {
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 100px 50px 100px 100px 25px 150px;
   width: 60vw;
-  height: 75vh;
   padding-top: 50px;
   margin: 0 auto;
 }
 
-/* Column 1 */
+/* Row 1 */
 
 .current-temp {
   grid-column: 1;
@@ -54,16 +30,20 @@ h1 {
   justify-self: start;
 }
 
-.feels-like {
+.uv {
   grid-column: 1;
-  grid-row: 2 / 3;
-  justify-self: start;
+  grid-row: 1;
+  justify-self: end;
   align-self: start;
-  padding-left: 10px;
+  padding-right: 30px;
 }
 
-.feels-like p {
-  margin: 0;
+.weather-description {
+  grid-column: 2 / span 2;
+  grid-row: 1 / 1;
+  justify-self: start;
+  align-self: end;
+  font-size: 48px;
 }
 
 .max-temp {
@@ -91,14 +71,18 @@ h1 {
   font-size: 24px;
 }
 
-/* Column 2 */
+/* Row 2 */
 
-.weather-description {
-  grid-column: 2 / span 2;
-  grid-row: 1 / 1;
+.feels-like {
+  grid-column: 1;
+  grid-row: 2 / 3;
   justify-self: start;
-  align-self: end;
-  font-size: 48px;
+  align-self: start;
+  padding-left: 10px;
+}
+
+.feels-like p {
+  margin: 0;
 }
 
 .rain-chance {
@@ -107,6 +91,8 @@ h1 {
   grid-column: 2;
   grid-row: 2;
 }
+
+/* Row 3 */
 
 .wind {
   grid-column: 1;
@@ -135,13 +121,7 @@ h1 {
   padding-right: 20%;
 }
 
-.uv {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-  align-self: start;
-  padding-right: 30px;
-}
+/*=============================== Forecast ================================= */
 
 .forecast-label {
   grid-column: 1 / span 4;
@@ -158,21 +138,18 @@ h1 {
   grid-column: 2;
   grid-row: 6;
   padding-left: 10px;
-
 }
 
 .weather-3 {
   grid-column: 3;
   grid-row: 6;
   padding-left: 10px;
-
 }
 
 .weather-4 {
   grid-column: 4;
   grid-row: 6;
   padding-left: 10px;
-
 }
 
 .tomorrow-weather span {
@@ -198,4 +175,94 @@ h1 {
 
 .min {
   font-size: 24px;
+}
+
+/* ================================= For mobile devices ================================*/
+
+@media (max-width: 767px) {
+  .weather-data-container {
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 50px 150px 100px 100px 100px 150px 25px 150px 150px 150px 150px;
+    width: 80vw;
+  }
+
+  .current-temp {
+    grid-row: 1;
+  }
+
+  .uv {
+    grid-row: 1;
+    padding-right: 0;
+  }
+
+  .feels-like {
+    grid-row: 2;
+  }
+
+  .weather-description {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: center;
+  }
+
+  .max-temp {
+    grid-column: 1;
+    grid-row: 4;
+    justify-self: start;
+    align-self: center;
+  }
+
+  .min-temp {
+    grid-column: 1;
+    grid-row: 4;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .rain-chance {
+    grid-column: 1;
+    grid-row: 5;
+  }
+
+  .wind {
+    grid-row: 6;
+  }
+
+  .sunrise {
+    grid-column: 1;
+    grid-row: 7;
+  }
+
+  .sunset {
+    grid-column: 1;
+    grid-row: 7;
+    justify-self: end;
+  }
+
+  .forecast-label {
+    grid-column: 1;
+    grid-row: 8;
+  }
+
+  .tomorrow-weather {
+    grid-row: 9;
+  }
+
+  .overmorrow-weather {
+    grid-column: 1;
+    grid-row: 10;
+    padding-left: 10px;
+  }
+
+  .weather-3 {
+    grid-column: 1;
+    grid-row: 11;
+    padding-left: 10px;
+  }
+
+  .weather-4 {
+    grid-column: 1;
+    grid-row: 12;
+    padding-left: 10px;
+  }
 }
