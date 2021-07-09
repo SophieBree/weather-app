@@ -9,7 +9,7 @@ function App() {
 
   const search = () => {
     fetch(
-      `/.netlify/functions/fetch-current-weather?city=${city}`,
+      `/.netlify/functions/fetch-weather/fetch-current-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
@@ -17,7 +17,7 @@ function App() {
         setCurrentWeather(result);
       });
     fetch(
-      `/.netlify/functions/fetch-forecast-weather?city=${city}`,
+      `/.netlify/functions/fetch-weather/fetch-forecast-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
