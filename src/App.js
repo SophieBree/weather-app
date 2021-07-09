@@ -5,11 +5,11 @@ import WeatherData from "./components/WeatherData";
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [forecastWeather, setForecastWeather] = useState({});
-  const [query, setQuery] = useState("");
+  const [city, setCity] = useState("");
 
   const search = () => {
     fetch(
-      `https://api.weatherbit.io/v2.0/current?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`,
+      `/.netlify/functions/fetch-current-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
@@ -17,7 +17,7 @@ function App() {
         setCurrentWeather(result);
       });
     fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${query}&country=Australia&key=${process.env.REACT_APP_API_KEY}`,
+      `/.netlify/functions/fetch-forecast-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
@@ -41,8 +41,8 @@ function App() {
         name="search"
         id="search"
         placeholder="Search..."
-        onChange={(e) => setQuery(e.target.value)}
-        value={query}
+        onChange={(e) => setCity(e.target.value)}
+        value={city}
       />
       <button onClick={search}>Get Weather Data</button>
       {typeof currentWeather.data != "undefined" &&
