@@ -57,6 +57,7 @@ export default function WeatherDataTemp(props) {
         <p>Tomorrow</p>
         <span className="max">{props.forecastWeather.data[0].max_temp}º</span>
         <span className="min">{props.forecastWeather.data[0].min_temp}º</span>
+        <span className="forecast-rain">{props.forecastWeather.data[0].pop}% chance of rain</span>
       </div>
 
       <div className="overmorrow-weather">
@@ -65,6 +66,7 @@ export default function WeatherDataTemp(props) {
         </p>
         <span className="max">{props.forecastWeather.data[1].max_temp}º</span>
         <span className="min">{props.forecastWeather.data[1].min_temp}º</span>
+        <span className="forecast-rain">{props.forecastWeather.data[1].pop}% chance of rain</span>
       </div>
 
       <div className="weather-3">
@@ -73,6 +75,7 @@ export default function WeatherDataTemp(props) {
         </p>
         <span className="max">{props.forecastWeather.data[2].max_temp}º</span>
         <span className="min">{props.forecastWeather.data[2].min_temp}º</span>
+        <span className="forecast-rain">{props.forecastWeather.data[2].pop}% chance of rain</span>
       </div>
 
       <div className="weather-4">
@@ -81,6 +84,7 @@ export default function WeatherDataTemp(props) {
         </p>
         <span className="max">{props.forecastWeather.data[3].max_temp}º</span>
         <span className="min">{props.forecastWeather.data[3].min_temp}º</span>
+        <span className="forecast-rain">{props.forecastWeather.data[3].pop}% chance of rain</span>
       </div>
     </div>
   );
