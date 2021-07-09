@@ -9,7 +9,7 @@ function App() {
 
   const search = () => {
     fetch(
-      `/.netlify/functions/fetch-weather/fetch-current-weather?city=${city}`,
+      `/.netlify/functions/fetch-current-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
@@ -17,19 +17,20 @@ function App() {
         setCurrentWeather(result);
       });
     fetch(
-      `/.netlify/functions/fetch-weather/fetch-forecast-weather?city=${city}`,
+      `/.netlify/functions/fetch-forecast-weather?city=${city}`,
       { mode: "cors" }
     )
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         let sunrise_time = new Date(
-          result.data[0].sunrise_ts * 1000
+          result.data.data[0].sunrise_ts * 1000
         ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
         let sunset_time = new Date(
-          result.data[0].sunset_ts * 1000
+          result.data.data[0].sunset_ts * 1000
         ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        result.data[0].sunrise_ts = sunrise_time;
-        result.data[0].sunset_ts = sunset_time;
+        result.data.data[0].sunrise_ts = sunrise_time;
+        result.data.data[0].sunset_ts = sunset_time;
         setForecastWeather(result);
       });
   };
@@ -48,7 +49,7 @@ function App() {
       {typeof currentWeather.data != "undefined" &&
       typeof forecastWeather.data != "undefined" ? (
         <div>
-          <h1>Weather Data for {currentWeather.data[0].city_name}</h1>
+          <h1>Weather Data for {currentWeather.data.data[0].city_name}</h1>
           <WeatherData
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
